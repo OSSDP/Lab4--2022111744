@@ -2,16 +2,16 @@ name: tests
 on: push
 jobs:
   run_tests:
-    runs-on: ubuntu-latest  # Or specify ubuntu-22.04 if preferred
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Set up JDK 21
+      - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
-          java-version: 21
+          java-version: 17
       - name: Cache Maven packages
-        uses: actions/cache@v3  # Updated to the latest version
+        uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
