@@ -8,17 +8,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v2  # 更新为 v2 以避免 v1 的问题
+        uses: actions/setup-java@v2
         with:
-          java-version: 17  # 确保使用与 pom.xml 中一致的 JDK 版本
-          distribution: 'adoptopenjdk'  # 可以使用 AdoptOpenJDK，也可以选择其他分发版，如 zulu、amazon-corretto
+          java-version: 17
+          distribution: 'temurin'  # 使用 Eclipse Adoptium（之前的 AdoptOpenJDK）
 
       - name: Cache Maven packages
-        uses: actions/cache@v3  # 使用 v3 以避免 v2 的弃用警告
+        uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
       - name: Run tests with Maven
-        run: mvn -B test --file ./pom.xml  # 具体到 pom.xml 文件的路径，假设文件位于根目录
+        run: mvn -B test --file ./pom.xml
