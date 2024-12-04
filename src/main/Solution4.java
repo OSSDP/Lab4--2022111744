@@ -7,7 +7,7 @@ class Solution4 {
         if (n < 2) {
             return 0;
         }
-
+        //1
         long exp = 1;
         // 修改 2：buf 数组的大小应为 n，而不是 nums.length - 1
         int[] buf = new int[n];
